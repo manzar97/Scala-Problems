@@ -10,3 +10,14 @@ def main(args:Array[String]): Unit ={
 }
 }
 
+//Method-2 (Using tail recursion and pattern matching)
+
+Object lastElement{
+def main(args Array[String]) : Unit ={
+
+def lastRecursive(ls:List[A]) = ls match{
+Case h :: Nil => h
+Case _ :: tail => lastRecursive(tail)
+Case _ => throw new NoSuchElementException
+}
+}
