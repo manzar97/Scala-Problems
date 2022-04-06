@@ -1,0 +1,52 @@
+
+object MyClass {
+    
+    // 1- Switch
+    val aNumber= 44
+    val ordinal = aNumber match {
+        case 1 => " First"
+        case 2 => " Second"
+        case 3 => "Third"
+        case _ => aNumber + "th"
+    }
+    
+    //2 - deconstruction of case class
+    case class Person(name: String , age:Int)
+    val bob = Person("Bob", 34)
+    val bobGreeting = bob match {
+        case Person(n,a)= s"Hi my name is $n and I am $a years old"
+    }
+    
+    // Trick - 1 List Extractors
+    val numberList = List(1,2,3,54)
+    val mustHaveThree = numberList match {
+        case List(_,_,3,somethingElse) => s"the list has 3rd element 3, so the 4th element is $somethingElse"
+    }
+    //Trick - 2 Haskell like prepending
+    val startsWithOne = numberList match {
+        case Nil => "List is empty"
+        case 1 :: tail => s"List starts with 1 and tail is $tail"
+    }
+    
+    //Trick 3 vararg pattern
+    val dontCareAboutTheRest = numberList match {
+        case List(_,2,_*) => "I only care about the second place being 2"
+    }
+    
+    //trick - 4 other infix pattern
+    val mustEndWith = numberList match {
+        case List(1,_*) :+ 54 => "I don't care how long the list is , I just want it to end with 54"
+    }
+    
+    //trick-5 type specifier
+    def givemeValue(): Any = 45
+    val givemeValue = givemeValue() match {
+        case _: String => "Th type is String"
+        case _: Int    => "the type is Int"
+        case _         => "something else"
+    }
+
+    def main(args: Array[String]) {
+       println(dontCareAboutTheRest)
+    }
+}

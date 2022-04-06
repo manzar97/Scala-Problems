@@ -1,0 +1,25 @@
+// P05 (*) Find the number of elements of a list.
+//     Example:
+//     scala> length(List(1, 1, 2, 3, 5, 8))
+//     res0: Int = 6
+
+Object p05{
+Def lengthBuiltin[A](ls:List[A]) : Int = ls.length
+
+
+//Simple recursive solution 
+
+Def lengthRecursive[A](ls:List[A]) : Int = ls match{
+Case Nil.     => 0
+Case _ :: tail => 1 + lengthRecursive(tail)
+}
+
+//Tail Recursive solution
+
+Def lengthTail[A](ls:List[A]) : Int {
+  Def lengthR(result : Int, curList:List[A]){
+  Case Nil.       => 0
+  Case _ :: tail  => lengthR(result+1, tail)
+}
+lengthR(0,ls)
+}

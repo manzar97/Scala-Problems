@@ -1,0 +1,15 @@
+//Find the penultimate element of a list
+
+
+Def penultimate(ls:List[A]) : A = 
+If (ls.isEmpty ) throw NoSuchElementException
+Else ls.init.last
+
+
+//Pattern Matching
+
+Def penultimate (ls:List[A]) : A = ls match{
+Case h :: _ :: Nil => h
+Case _ :: tail.  => penultimate(tail)
+Case  _   =>. Throw new NoSuchElementException
+}

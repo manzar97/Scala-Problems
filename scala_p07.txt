@@ -1,0 +1,27 @@
+// P07 (*) Reverse a list.
+//     Example:
+//     scala> reverse(List(1, 1, 2, 3, 5, 8))
+//     res0: List[Int] = List(8, 5, 3, 2, 1, 1)
+
+
+Object p07{
+Def BuiltInReverse[A]( ls: List[A]) : List[A] = ls.reverse
+
+
+//Simple recursive O(n^2)
+
+Def reverseRecursive[A](ls:List[A]) : List[A] = ls match{
+Case Nil      => Nil
+Case h::tail  => reverseRecursive(tail) ::: List(h)
+}
+
+
+// Tail Recursive 
+
+Def tailReverse[A](ls:List[A]) : List[A] = {
+  Def reverseR(result : List[A] , curList:List[A]) : List[A] = curList match{
+Case Nil.      => result
+Case h:: tail  => reverseR(h::result , tail)
+}
+reverseR(Nil, ls)
+}
