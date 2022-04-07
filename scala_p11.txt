@@ -1,0 +1,16 @@
+// P11 (**) Drop every Nth element from a list.
+//     Example:
+//     scala> drop(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
+//     res0: List[Symbol] = List('a, 'b, 'd, 'e, 'g, 'h, 'j, 'k)
+
+
+Object p11 {
+// Simple Recursion
+Def dropRecursive [A](n:Int , ls: List[A] ) : List[A] = {
+Def dropR(c:Int , curList : List[A] ) : List[A] = (c,curList) match {
+Case (_, Nil).      => Nil
+Case (1, _ :: tail) => dropR(n , tail)
+Case (_ , h :: tail ) => h :: dropR(c-1 , tail)
+}
+dropR( n ,ls)
+}
